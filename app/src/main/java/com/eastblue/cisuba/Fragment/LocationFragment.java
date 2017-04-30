@@ -774,7 +774,6 @@ public class LocationFragment extends Fragment {
         mMapContext.onResume();
         if (myLocation != null) {
             mMapController.animateTo(myLocation);
-            poiDataOverlay.showAllPOIdata(0);
         }
         Log.d("frag", "onResume");
     }

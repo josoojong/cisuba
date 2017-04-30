@@ -322,15 +322,15 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btn_pay"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/product_detail_pay_btn"
-                android:text="결제하기"
-                android:textColor="@color/White"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <!--<Button-->
+                <!--android:id="@+id/btn_pay"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/product_detail_pay_btn"-->
+                <!--android:text="결제하기"-->
+                <!--android:textColor="@color/White"-->
+                <!--android:textSize="16sp"-->
+                <!--android:textStyle="bold" />-->
             <!--<LinearLayout-->
                 <!--android:layout_width="match_parent"-->
                 <!--android:layout_height="wrap_content"-->

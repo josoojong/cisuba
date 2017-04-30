@@ -160,7 +160,6 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     }
 
-<<<<<<< HEAD
     /*@OnClick(R.id.btn_pay)
     public void openPayWeb() {
         //Intent payWebActivity = new Intent(ProductDetailActivity.this, PaymentWebActivity.class);
@@ -168,8 +167,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         startActivity(new Intent(this, PaymentWebActivity.class));
     }*/
 
-=======
->>>>>>> 503f95eb481774bdd87c716d6f8000a4551f5902
     @OnClick(R.id.frame_map)
     public void openMapDetail() {
         if (isRecv) {

@@ -254,7 +254,7 @@
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/tv_office_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1666-8428"

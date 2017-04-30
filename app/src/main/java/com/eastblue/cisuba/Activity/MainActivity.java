@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -309,6 +310,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (KakaoParameterException e) {
             e.printStackTrace();
         }
+    }
+
+    @OnClick(R.id.img_office_phone)
+    public void call_office() {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:16668428"));
+        startActivity(intent);
     }
 
     @OnClick(R.id.drawer_profile)

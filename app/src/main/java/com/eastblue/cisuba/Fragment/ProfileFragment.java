@@ -58,8 +58,8 @@ public class ProfileFragment extends Fragment {
     public static ImageButton logout;
     Bitmap bitmap;
 
-    @BindView(R.id.tv_office_phone) TextView tvPhone;
-
+    @BindView(R.id.tv_office_phone)
+    TextView tvPhone;
 
 
     @Nullable
@@ -68,10 +68,10 @@ public class ProfileFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         ButterKnife.bind(this, rootView);
 
-        nickname = (TextView)rootView.findViewById(R.id.tv_name);
-        profileimage = (CircleImageView)rootView.findViewById(R.id.imv_profile);
-        logout = (ImageButton)rootView.findViewById(R.id.btn_logout);
-        if(Session.getCurrentSession().isClosed()) {
+        nickname = (TextView) rootView.findViewById(R.id.tv_name);
+        profileimage = (CircleImageView) rootView.findViewById(R.id.imv_profile);
+        logout = (ImageButton) rootView.findViewById(R.id.btn_logout);
+        if (Session.getCurrentSession().isClosed()) {
             if (LoginActivity.mOAuthLoginModule != null) {
                 if (LoginActivity.mOAuthLoginModule.getState(getActivity()).toString().equals("OK")) {
                 } else {
@@ -90,7 +90,7 @@ public class ProfileFragment extends Fragment {
                 logout.setEnabled(false);
             }
         }
-        if(!Session.getCurrentSession().isClosed()) {
+        if (!Session.getCurrentSession().isClosed()) {
             MainActivity.profileimage.setEnabled(false);
             ProfileFragment.profileimage.setEnabled(false);
             ProfileFragment.logout.setEnabled(true);
@@ -100,7 +100,7 @@ public class ProfileFragment extends Fragment {
         tvPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+tvPhone.getText()));
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tvPhone.getText()));
                 startActivity(intent);
             }
         });
@@ -121,7 +121,7 @@ public class ProfileFragment extends Fragment {
                 .setTitle("로그아웃")
                 .setMessage("로그아웃 하시겠습니다?")
                 //.setIcon()
-                .setPositiveButton("예",new DialogInterface.OnClickListener() {
+                .setPositiveButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         UserManagement.requestLogout(new LogoutResponseCallback() {
@@ -133,7 +133,7 @@ public class ProfileFragment extends Fragment {
                             }
                         });
 
-                        if(LoginActivity.mOAuthLoginModule != null) {
+                        if (LoginActivity.mOAuthLoginModule != null) {
                             LoginActivity.mOAuthLoginModule.logout(LoginActivity.mContext);
                             nickname.setText("로그인을 하세요.");
                             MainActivity.nickname.setText("로그인을 하세요.");
@@ -174,18 +174,18 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onResume() {
-        if(!Session.getCurrentSession().isClosed()) {
+        if (!Session.getCurrentSession().isClosed()) {
             MainActivity.profileimage.setEnabled(false);
             ProfileFragment.profileimage.setEnabled(false);
             ProfileFragment.logout.setEnabled(true);
             requestMe();
         }
 
-        if(LoginActivity.mOAuthLoginModule != null) {
-            if(LoginActivity.mOAuthLoginModule.getState(getActivity()).toString().equals("OK")) {
+        if (LoginActivity.mOAuthLoginModule != null) {
+            if (LoginActivity.mOAuthLoginModule.getState(getActivity()).toString().equals("OK")) {
                 ProfileFragment.nickname.setText(LoginActivity.name);
                 MainActivity.nickname.setText(LoginActivity.name);
-                System.out.println("resume -- "+LoginActivity.name);
+                System.out.println("resume -- " + LoginActivity.name);
 
                 new Thread(new Runnable() {
                     @Override
@@ -195,7 +195,7 @@ public class ProfileFragment extends Fragment {
                         } catch (Exception e) {
 
                         } finally {
-                            if(bitmap != null) {
+                            if (bitmap != null) {
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -210,7 +210,7 @@ public class ProfileFragment extends Fragment {
             }
         }
 
-        if(LoginActivity.ISLOGIN ) {
+        if (LoginActivity.ISLOGIN) {
             ProfileFragment.nickname.setText(LoginActivity.login_user_name);
             MainActivity.nickname.setText(LoginActivity.login_user_name);
 
@@ -348,7 +348,7 @@ public class ProfileFragment extends Fragment {
                         } catch (Exception e) {
 
                         } finally {
-                            if(bitmap != null) {
+                            if (bitmap != null) {
                                 getActivity().runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -379,7 +379,7 @@ public class ProfileFragment extends Fragment {
 
         try {
             imgUrl = new URL(url);
-            connection = (HttpURLConnection)imgUrl.openConnection();
+            connection = (HttpURLConnection) imgUrl.openConnection();
             connection.setDoInput(true);
             connection.connect();
             is = connection.getInputStream();
@@ -388,16 +388,18 @@ public class ProfileFragment extends Fragment {
             e.printStackTrace();
             return null;
         } finally {
-            if(connection != null) {
+            if (connection != null) {
                 connection.disconnect();
             }
             return retBitmap;
         }
     }
+
     @OnClick(R.id.tv_privacy)
     void open_privacy() {
         startActivity(new Intent(getActivity(), PrivacyActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }
+
     @OnClick(R.id.tv_terms)
     void open_terms() {
         startActivity(new Intent(getActivity(), TermsActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
