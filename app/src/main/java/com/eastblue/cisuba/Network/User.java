@@ -38,10 +38,20 @@ public interface User {
 
     @FormUrlEncoded
     @POST("/members")
-    void requsetLogin(
+    void requestLogin(
             @Field("email") String email,
             @Field("password") String password,
             Callback<CodeModel> callback
 
+    );
+
+    @FormUrlEncoded
+    @POST("/members/new")
+    void requestJoin(
+            @Field("email") String email,
+            @Field("password") String password,
+            @Field("username") String username,
+            @Field("phone") String phone,
+            Callback<CodeModel> callback
     );
 }

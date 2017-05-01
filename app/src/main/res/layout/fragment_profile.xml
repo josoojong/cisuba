@@ -42,7 +42,7 @@
 
                 <TextView
                     android:id="@+id/tv_name"
-                    android:text="로그인기능 준비중"
+                    android:text="로그인을 하세요."
                     android:textColor="@color/White"
                     android:textStyle="bold"
                     android:layout_marginTop="@dimen/margin_default"

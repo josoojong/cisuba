@@ -2,6 +2,7 @@ package com.eastblue.cisuba.Model;
 
 import android.support.annotation.StringRes;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -10,21 +11,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class UserModel {
     @SerializedName("id")
-    public String id;
-
+    @Expose
+    public Integer id;
     @SerializedName("email")
+    @Expose
     public String email;
-
     @SerializedName("username")
+    @Expose
     public String username;
-
     @SerializedName("last_login")
-    public String last_login;
-
-    @SerializedName("date_joined")
-    public String date_joined;
-
+    @Expose
+    public String lastLogin;
+    @SerializedName("date_join")
+    @Expose
+    public String dateJoin;
     @SerializedName("phone")
+    @Expose
     public String phone;
 
 }
