@@ -142,7 +142,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         mMapView.setFocusable(true);
         mMapView.setFocusableInTouchMode(true);
         mMapView.requestFocus();
-        mMapView.setScalingFactor(2.0f, false);
+        mMapView.setScalingFactor(3.0f, false);
         mMapViewerResourceProvider = new NMapViewerResourceProvider(this);
         mOverlayManager = new NMapOverlayManager(this, mMapView, mMapViewerResourceProvider);
         mMapController = mMapView.getMapController();
@@ -278,7 +278,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         NMapPOIdataOverlay poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
         poiDataOverlay.showAllPOIdata(0);
 
-        mMapView.getMapController().setMapCenter(lng, lat, 11);
+        mMapView.getMapController().setMapCenter(lng, lat, 10);
         productPoint = new NGeoPoint((int) (lng * 1E6), (int) (lat * 1e6));
         mMapController.animateTo(productPoint);
     }
@@ -319,7 +319,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        mMapView.getMapController().setMapCenter(lng, lat, 11);
+        mMapView.getMapController().setMapCenter(lng, lat, 10);
         super.onResume();
     }
 

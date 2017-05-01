@@ -165,7 +165,7 @@ public class LocationFragment extends Fragment {
         mMapView.setOnMapViewTouchEventListener(onMapViewTouchEventListener);
         mMapViewerResourceProvider = new NMapViewerResourceProvider(getActivity());
         mOverlayManager = new NMapOverlayManager(getActivity(), mMapView, mMapViewerResourceProvider);
-        mMapView.setScalingFactor(2.0f, false);
+        mMapView.setScalingFactor(3.0f, false);
         mMapContext.onStart();
 
         // location manager

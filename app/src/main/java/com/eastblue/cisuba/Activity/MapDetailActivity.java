@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -45,9 +46,9 @@ public class MapDetailActivity extends AppCompatActivity {
     @BindView(R.id.mapView)
     NMapView mMapView;
     @BindView(R.id.btn_mylocation)
-    ImageButton btn_mylocation;
+    CardView btn_mylocation;
     @BindView(R.id.btn_product)
-    ImageButton btn_product;
+    CardView btn_product;
     @BindView(R.id.map_progressBar)
     ProgressBar progressBar;
 
@@ -112,8 +113,6 @@ public class MapDetailActivity extends AppCompatActivity {
         poiData = new NMapPOIdata(2, mMapViewerResourceProvider);
         poiData.beginPOIdata(1);
         poiData.addPOIitem(lng, lat, productName,markerId, 0);
-        mMapView.getMapController().setMapCenter(lng,lat,11);
-        mMapController.animateTo(productPoint);
 
 //        if (myLat != 0) {
 //            Drawable myPin = getResources().getDrawable(R.drawable.my_pin);
@@ -127,7 +126,7 @@ public class MapDetailActivity extends AppCompatActivity {
         poiDataOverlay.showAllPOIdata(0);
 
         mMapView.setClickable(true); // 맵 클릭 가능하게
-        mMapView.setScalingFactor(2.0f,false);
+        mMapView.setScalingFactor(3.0f,false);
 
         // location manager
         mMapLocationManager = new NMapLocationManager(this);
@@ -138,6 +137,9 @@ public class MapDetailActivity extends AppCompatActivity {
 
         // create my location overlay
         mMyLocationOverlay = mOverlayManager.createMyLocationOverlay(mMapLocationManager, mMapCompassManager);
+
+        mMapController.animateTo(productPoint);
+        mMapView.getMapController().setMapCenter(lng,lat,10);
     }
 
     @OnClick(R.id.btn_mylocation)
