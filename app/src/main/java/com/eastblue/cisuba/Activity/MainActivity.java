@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eastblue.cisuba.Adapter.SharedPreferenceAdapter;
 import com.eastblue.cisuba.Adapter.TabPagerAdapter;
 import com.eastblue.cisuba.Dialog.MainPopUpDialog;
 import com.eastblue.cisuba.Fragment.ProfileFragment;
@@ -101,11 +102,18 @@ public class MainActivity extends AppCompatActivity {
         nickname = (TextView) findViewById(R.id.drawer_nick);
         profileimage = (CircleImageView) findViewById(R.id.drawer_profile);
 
+        if(SharedPreferenceAdapter.getUserEmail(MainActivity.this).length() != 0) {
+            System.out.println("shared test : "+SharedPreferenceAdapter.getUserEmail(MainActivity.this));
+            System.out.println("shared test : "+SharedPreferenceAdapter.getUserName(MainActivity.this));
+        } else {
+            System.out.println("shared test : length = 0");
+        }
+
     }
 
     @Override
     protected void onResume() {
-        System.out.println("----------"+LoginActivity.mOAuthLoginModule);
+        //naver
         if (LoginActivity.mOAuthLoginModule != null) {
             if (LoginActivity.mOAuthLoginModule.getState(this).toString().equals("OK")) {
                 ProfileFragment.nickname.setText(LoginActivity.name);
@@ -135,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        //kakao
         if(!Session.getCurrentSession().isClosed()) {
             try {
                 MainActivity.profileimage.setEnabled(false);
@@ -144,13 +153,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        if(LoginActivity.ISLOGIN ) {
-            ProfileFragment.nickname.setText(LoginActivity.login_user_name);
-            MainActivity.nickname.setText(LoginActivity.login_user_name);
+        //eamil
+        if(SharedPreferenceAdapter.getUserName(MainActivity.this).length() != 0) {
+            MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(MainActivity.this));
 
             MainActivity.profileimage.setEnabled(false);
-            ProfileFragment.profileimage.setEnabled(false);
-            ProfileFragment.logout.setEnabled(true);
         }
         super.onResume();
     }

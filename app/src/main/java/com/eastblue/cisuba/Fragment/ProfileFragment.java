@@ -22,6 +22,7 @@ import com.eastblue.cisuba.Activity.NoticeActivity;
 import com.eastblue.cisuba.Activity.PrivacyActivity;
 import com.eastblue.cisuba.Activity.RequestPartnerActivity;
 import com.eastblue.cisuba.Activity.TermsActivity;
+import com.eastblue.cisuba.Adapter.SharedPreferenceAdapter;
 import com.eastblue.cisuba.R;
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.Session;
@@ -144,6 +145,18 @@ public class ProfileFragment extends Fragment {
                             logout.setEnabled(false);
                         }
 
+                        if(SharedPreferenceAdapter.getUserName(getActivity()).length() != 0) {
+                            SharedPreferenceAdapter.clearUserEmail(getActivity());
+
+                            nickname.setText("로그인을 하세요.");
+                            MainActivity.nickname.setText("로그인을 하세요.");
+                            profileimage.setImageResource(R.drawable.ic_launcher);
+                            MainActivity.profileimage.setImageResource(R.drawable.ic_launcher);
+                            MainActivity.profileimage.setEnabled(true);
+                            profileimage.setEnabled(true);
+                            logout.setEnabled(false);
+                        }
+
                         nickname.setText("로그인을 하세요.");
                         MainActivity.nickname.setText("로그인을 하세요.");
                         MainActivity.profileimage.setEnabled(true);
@@ -160,16 +173,6 @@ public class ProfileFragment extends Fragment {
                 })
                 .show();
 
-        /*
-        UserManagement.requestLogout(new LogoutResponseCallback() {
-            @Override
-            public void onCompleteLogout() {
-                nickname.setText("로그인을 하세요.");
-                Intent intent = new Intent(getActivity(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-        */
     }
 
     @Override
@@ -210,9 +213,11 @@ public class ProfileFragment extends Fragment {
             }
         }
 
-        if (LoginActivity.ISLOGIN) {
-            ProfileFragment.nickname.setText(LoginActivity.login_user_name);
-            MainActivity.nickname.setText(LoginActivity.login_user_name);
+
+
+        if(SharedPreferenceAdapter.getUserName(getActivity()).length() != 0) {
+            ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(getActivity()));
+            MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(getActivity()));
 
             MainActivity.profileimage.setEnabled(false);
             ProfileFragment.profileimage.setEnabled(false);
@@ -250,63 +255,6 @@ public class ProfileFragment extends Fragment {
             e.printStackTrace();
         }
     }
-
-    /*private void requestMe() {
-        UserManagement.requestMe(new MeResponseCallback() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {    //나머지 오류
-                String message = "failed to get user info. msg=" + errorResult;
-                Logger.d(message);
-
-                //redirectLoginActivity();
-
-                ErrorCode result = ErrorCode.valueOf(errorResult.getErrorCode());
-                if(result == ErrorCode.CLIENT_ERROR_CODE) {
-                    //finish();
-                } else {
-                    //redirectLoginActivity();
-                }
-            }
-
-            @Override
-            public void onSessionClosed(ErrorResult errorResult) {  //세션이 닫힌 경우
-                //redirectLoginActivity();
-            }
-
-            @Override
-            public void onSuccess(final UserProfile userProfile) {    //성공
-                Logger.d("UserProfile : " + userProfile);
-
-                nickname.setText(userProfile.getNickname());
-
-                /*new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            bitmap = getBitmap(userProfile.getThumbnailImagePath());
-                        } catch (Exception e) {
-
-                        } finally {
-                            if(bitmap != null) {
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        profileimage.setImageBitmap(bitmap);
-                                    }
-                                });
-                            }
-                        }
-                    }
-                }).start();
-
-            }
-
-            @Override
-            public void onNotSignedUp() {   //가입되지 않은 경우
-                //showSignup();
-            }
-        });
-    }*/
 
     private void requestMe() {
         final List<String> propertyKeys = new ArrayList<String>();

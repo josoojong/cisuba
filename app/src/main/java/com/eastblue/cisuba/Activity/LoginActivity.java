@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.eastblue.cisuba.Adapter.SharedPreferenceAdapter;
 import com.eastblue.cisuba.Fragment.ProfileFragment;
 import com.eastblue.cisuba.Kakao.KakaoLoginControl;
 import com.eastblue.cisuba.Manager.NetworkManager;
@@ -126,11 +127,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
 
     TextView join;
 
-    EditText et_eamil, et_password;
-
-    public static String login_user_name = "";
-
-    public static boolean ISLOGIN = false;
+    EditText et_email, et_password;
 
     SharedPreferences setting;
     SharedPreferences.Editor editor;
@@ -147,13 +144,6 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
 
-        /*
-        setting = getSharedPreferences("login_setting",MODE_PRIVATE);
-        editor = setting.edit();
-
-        loginId = setting.getString("inputId",null);
-        loginPwd = setting.getString("inputPwd",null);
-        */
 
         callback = new SessionCallback();
         Session.getCurrentSession().addCallback(callback);
@@ -161,8 +151,8 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
 
         //InitializeNaverAPI();
 
-        /*et_eamil = (EditText) findViewById(R.id.input_email);
-        et_password = (EditText) findViewById(R.id.input_pass);*/
+        et_email = (EditText) findViewById(R.id.input_email);
+        et_password = (EditText) findViewById(R.id.input_pass);
 
 
         tvnaver = (TextView) findViewById(R.id.naver_text);
@@ -239,10 +229,9 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             public void onClick(View view) {
                 finish();
             }
-        });
-*/
-        /*join = (TextView) findViewById(R.id.btn_join);
-        join.setText(Html.fromHtml("<u>" + "회원가입" + "</u>"));*/
+        });*/
+        join = (TextView) findViewById(R.id.btn_join);
+        join.setText(Html.fromHtml("<u>" + "회원가입" + "</u>"));
 
     }
 
@@ -257,12 +246,12 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         finish();
     }
 
-    /*@OnClick(R.id.email_login)
+    @OnClick(R.id.email_login)
     void login_email() {
-        *//*
-        String key = "cisuba";
+
+        /*String key = "cisuba";
         String en,de;
-        System.out.println("email : " + et_eamil.getText().toString());
+        System.out.println("email : " + et_email.getText().toString());
         System.out.println("pass  : " + et_password.getText().toString());
         try {
             en = Encrypt(et_password.getText().toString(), "hello");
@@ -273,47 +262,48 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             System.out.println("pass decrypte : " + de);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        *//*
+        }*/
 
-        String ID = et_eamil.getText().toString();
-        String PW = et_password.getText().toString();
-        *//*
-        editor.putString("ID", ID);
-        editor.putString("PW", PW);
-        editor.putBoolean("Auto_Login_enabled", true);
-        editor.commit();
-        *//*
+
         System.out.println("login_test");
 
-        HttpUtil.api(User.class).requsetLogin(
-                et_eamil.getText().toString(),
-                et_password.getText().toString(),
-                new Callback<CodeModel>() {
-                    @Override
-                    public void success(CodeModel codeModel, Response response) {
-                        if (codeModel.code.equals("1")) {
-                            Toast.makeText(LoginActivity.this, "login", Toast.LENGTH_SHORT).show();
-                            *//*System.out.println("login_test user -"+codeModel.user);*//*
-                            System.out.println("login_test succeess user_name "+codeModel.user_name);
-                            System.out.println("login_test succeess code = " + codeModel.code);
-                            System.out.println("login_test succeess message = "+codeModel.message);
-                            //finish();
-                        } else {
-                            System.out.println("login_test fail code = " + codeModel.code);
-                            System.out.println("login_test fail message = "+codeModel.message);
+        if(et_email.getText().toString().length() == 0 || et_password.getText().toString().length() == 0) {
+
+        } else {
+
+            HttpUtil.api(User.class).requestLogin(
+                    et_email.getText().toString(),
+                    et_password.getText().toString(),
+                    new Callback<CodeModel>() {
+                        @Override
+                        public void success(CodeModel codeModel, Response response) {
+                            if (codeModel.code.equals("1")) {
+                                SharedPreferenceAdapter.setUserEmail(LoginActivity.this, et_email.getText().toString());
+                                SharedPreferenceAdapter.setUserName(LoginActivity.this, codeModel.user.username);
+
+                                ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
+                                MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
+
+                                MainActivity.profileimage.setEnabled(false);
+                                ProfileFragment.profileimage.setEnabled(false);
+                                ProfileFragment.logout.setEnabled(true);
+                                finish();
+                            } else {
+
+                            }
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            System.out.println("login_test failure");
+                            System.out.println(error);
                         }
                     }
+            );
+        }
+    }
 
-                    @Override
-                    public void failure(RetrofitError error) {
-                        System.out.println("login_test failure");
-                        System.out.println(error);
-                    }
-                });
-    }*/
-
-   /* @OnClick(R.id.btn_join)
+    @OnClick(R.id.btn_join)
     void toJoin() {
         startActivity(new Intent(this, JoinActivity.class));
     }
@@ -335,7 +325,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                 Log.d("login", result.toString());
             }
         });
-    }*/
+    }
 
     private void requestInformation() {
 
