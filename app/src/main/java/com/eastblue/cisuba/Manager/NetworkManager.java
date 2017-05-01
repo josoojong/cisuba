@@ -15,7 +15,7 @@ import retrofit.converter.GsonConverter;
  * Created by PJC on 2016-05-04.
  */
 public class NetworkManager {
-    public static final String SERVER_URL = "http://172.30.1.25:8081";
+    public static final String SERVER_URL = "http://cisuba.net";
 
 
     static NetworkManager networkManager;

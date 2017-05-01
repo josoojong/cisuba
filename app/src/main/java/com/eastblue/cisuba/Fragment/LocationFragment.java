@@ -108,7 +108,7 @@ public class LocationFragment extends Fragment {
     NearAdapter nearAdapter;
 
     int currentPage = 0;
-    int loadSize = 10;
+    int loadSize = 999;
     Boolean firstLoading = true;
     public static Boolean firstSelect = true;
     Boolean lastItemVisibleFlag = false;
@@ -140,8 +140,6 @@ public class LocationFragment extends Fragment {
             frameLayout.addView(mMapView);
 
             lvNear.addParallaxedHeaderView(frameLayout);
-
-
         }
         return this.rootView;
     }
@@ -413,7 +411,8 @@ public class LocationFragment extends Fragment {
                 }
                 poiData.endPOIdata();
                 poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
-                if (productModels.size() == size) {
+                Log.d("sizecheck", String.valueOf(productModels.size()));
+                if (productModels.size() > 0) {
                     poiDataOverlay.showAllPOIdata(0);
                 }
 

@@ -69,71 +69,177 @@
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
-            android:padding="@dimen/padding_default"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/background_product"
-                android:orientation="vertical">
-
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingLeft="8dp"
-                    android:paddingRight="8dp">
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:orientation="horizontal"
-                        android:paddingLeft="@dimen/padding_default"
-                        android:paddingRight="@dimen/padding_default"
-                        android:paddingTop="@dimen/padding_default">
+                        android:orientation="vertical"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_default"
+                            android:paddingRight="@dimen/padding_default"
+                            android:paddingTop="@dimen/padding_default">
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="[종로] Amare"
+                                android:textColor="@color/Black"
+                                android:textSize="@dimen/text_size_medium"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/lin_tag"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="20dp"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                        </LinearLayout>
 
                         <TextView
-                            android:id="@+id/tv_name"
-                            android:layout_width="0dp"
+                            android:id="@+id/tv_about"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="[종로] Amare"
-                            android:textColor="@color/Black"
-                            android:textSize="@dimen/text_size_medium"
-                            android:textStyle="bold" />
+                            android:layout_marginTop="20dp"
+                            android:paddingLeft="@dimen/padding_medium"
+                            android:paddingRight="@dimen/padding_default"
+                            android:text="대청 찜질방은 황금불가마 소금 냉방이 준비 되어있고 너무 반갑습니다 여러분 ^^ ~"
+                            android:textSize="@dimen/text_size_bsmall" />
 
                     </LinearLayout>
 
-                    <LinearLayout
-                        android:id="@+id/lin_tag"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="20dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/tv_about"
+                    <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:paddingLeft="@dimen/padding_medium"
-                        android:paddingRight="@dimen/padding_default"
-                        android:text="대청 찜질방은 황금불가마 소금 냉방이 준비 되어있고 너무 반갑습니다 여러분 ^^ ~"
-                        android:textSize="@dimen/text_size_bsmall" />
+                        android:layout_marginTop="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#ebebeb"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:padding="@dimen/padding_default">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.3"
+                                android:orientation="vertical"
+                                android:paddingBottom="3dp"
+                                android:paddingTop="3dp">
+
+                                <TextView
+                                    android:id="@+id/tv_price_morning"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="조조 5,000원"
+                                    android:textColor="@color/morning_text"
+                                    android:textSize="@dimen/text_size_bsmall"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+
+                            <View
+                                android:id="@+id/view3"
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/margin_default"
+                                android:background="@color/DarkGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.3"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_price_lunch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="평일 10,000원"
+                                    android:textColor="@color/lunch_text"
+                                    android:textSize="@dimen/text_size_bsmall"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginRight="@dimen/margin_default"
+                                android:background="@color/DarkGray" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.3"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tv_price_dinner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="야간 9,000원"
+                                    android:textColor="@color/dinner_text"
+                                    android:textSize="@dimen/text_size_bsmall"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="15dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/margin_small"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="@dimen/padding_default"
                         android:gravity="center|start"
                         android:orientation="horizontal"
                         android:paddingLeft="@dimen/padding_default"
@@ -149,10 +255,10 @@
                             android:id="@+id/tv_address"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:text="서울특별시 강남구 개포동"
                             android:textColor="@color/Gray"
-                            android:textSize="@dimen/text_size_default"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/text_size_bsmall" />
 
                     </LinearLayout>
 
@@ -176,10 +282,10 @@
                             android:id="@+id/tv_time"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:text="00:00 ~ 00:00"
                             android:textColor="@color/Gray"
-                            android:textSize="@dimen/text_size_default"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/text_size_bsmall" />
 
                     </LinearLayout>
 
@@ -203,156 +309,145 @@
                             android:id="@+id/tv_phone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
                             android:text="02) 515-5124"
                             android:textColor="@color/Gray"
-                            android:textSize="@dimen/text_size_default"
-                            android:textStyle="bold" />
+                            android:textSize="@dimen/text_size_bsmall" />
+
 
                     </LinearLayout>
 
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/background_product_cost"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/padding_default">
-
-                    <TextView
-                        android:id="@+id/tv_price_morning"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/margin_default"
-                        android:gravity="center"
-                        android:text="조조 5,000원"
-                        android:textColor="@color/morning_text"
-                        android:textSize="@dimen/text_size_bsmall"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/margin_default"
-                        android:background="@color/LightGrey" />
-
-                    <TextView
-                        android:id="@+id/tv_price_lunch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/margin_default"
-                        android:gravity="center"
-                        android:text="평일 10,000원"
-                        android:textColor="@color/lunch_text"
-                        android:textSize="@dimen/text_size_bsmall"
-                        android:textStyle="bold" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="@dimen/margin_default"
-                        android:background="@color/LightGrey" />
-
-                    <TextView
-                        android:id="@+id/tv_price_dinner"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/margin_default"
-                        android:gravity="center"
-                        android:text="야간 9,000원"
-                        android:textColor="@color/dinner_text"
-                        android:textSize="@dimen/text_size_bsmall"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+            </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
                 android:id="@+id/frame_map"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="@dimen/margin_default"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/margin_medium"
                 android:background="@color/Red">
 
-                <com.nhn.android.maps.NMapView
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/mapView"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <com.nhn.android.maps.NMapView
+
+                        android:layout_width="fill_parent"
+                        android:layout_height="200dp"
+                        android:id="@+id/mapView"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.5"
+                        android:orientation="horizontal">
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/btn_route"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="0.25dp"
+                            android:layout_weight="0.5"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:background="#1ca0b8"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:singleLine="false"
+                                android:text="도보"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/imageView2"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:paddingBottom="12dp"
+                                android:paddingRight="50dp"
+                                android:paddingTop="12dp"
+                                app:srcCompat="@drawable/btn_walk" />
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.CardView
+                            android:id="@+id/btn_navi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="0.25dp"
+                            android:layout_weight="0.5"
+                            android:padding="5dp">
+
+                            <TextView
+                                android:id="@+id/textView10"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:background="#1ca0b8"
+                                android:gravity="center"
+                                android:paddingLeft="40dp"
+                                android:text="네비"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/imageView3"
+                                android:layout_width="match_parent"
+                                android:layout_height="50dp"
+                                android:paddingBottom="12dp"
+                                android:paddingRight="60dp"
+                                android:paddingTop="12dp"
+                                app:srcCompat="@drawable/btn_navi" />
+
+                        </android.support.v7.widget.CardView>
+                    </LinearLayout>
+                </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
-            <LinearLayout
+
+            <Button
+                android:id="@+id/btn_pay"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="6dp"
-                android:layout_marginTop="10dp"
-                android:baselineAligned="false"
-                android:gravity="bottom"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_weight="0.5"
+                android:background="@color/DarkOrange"
+                android:text="결제하기"
+                android:textColor="@color/White"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <Button
-                    android:id="@+id/btn_route"
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:layout_marginRight="3dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/product_detail_map_btn"
-                    android:drawableLeft="@drawable/btn_walk"
-                    android:paddingLeft="20dp"
-                    android:text="도보"
-                    android:textColor="@color/White"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/btn_navi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="54dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/product_detail_map_btn"
-                    android:drawableLeft="@drawable/btn_navi"
-                    android:paddingLeft="20dp"
-                    android:text="네비"
-                    android:textColor="@color/White"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <!--<Button-->
-                <!--android:id="@+id/btn_pay"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:background="@drawable/product_detail_pay_btn"-->
-                <!--android:text="결제하기"-->
-                <!--android:textColor="@color/White"-->
-                <!--android:textSize="16sp"-->
-                <!--android:textStyle="bold" />-->
             <!--<LinearLayout-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:orientation="vertical">-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical">-->
 
-                <!--<TextView-->
-                    <!--android:layout_marginLeft="@dimen/margin_default"-->
-                    <!--android:layout_marginTop="@dimen/margin_default"-->
-                    <!--android:text="이용 안내"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:textColor="@color/Black"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
+            <!--<TextView-->
+            <!--android:layout_marginLeft="@dimen/margin_default"-->
+            <!--android:layout_marginTop="@dimen/margin_default"-->
+            <!--android:text="이용 안내"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textColor="@color/Black"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
 
-                <!--<TextView-->
-                    <!--android:id="@+id/tv_use_about"-->
-                    <!--android:layout_marginTop="@dimen/margin_default"-->
-                    <!--android:layout_marginLeft="@dimen/margin_large"-->
-                    <!--android:textSize="@dimen/text_size_small"-->
-                    <!--android:text="청결한 사용을 원칙으로 합니다."-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content" />-->
+            <!--<TextView-->
+            <!--android:id="@+id/tv_use_about"-->
+            <!--android:layout_marginTop="@dimen/margin_default"-->
+            <!--android:layout_marginLeft="@dimen/margin_large"-->
+            <!--android:textSize="@dimen/text_size_small"-->
+            <!--android:text="청결한 사용을 원칙으로 합니다."-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
 
             <!--</LinearLayout>-->
 
