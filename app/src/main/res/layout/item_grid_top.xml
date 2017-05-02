@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -9,32 +9,32 @@
 
         <ImageView
             android:id="@+id/imv_image"
-            android:background="@drawable/sample2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@drawable/sample2" />
 
         <LinearLayout
-            android:background="@drawable/gridient"
-            android:alpha="70"
-            android:gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="55dp"
             android:layout_gravity="bottom"
+            android:alpha="70"
+            android:background="@drawable/gridient"
+            android:gravity="bottom"
             android:orientation="vertical">
 
             <TextView
-                android:text="dfdfd"
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_default"
                 android:maxLines="1"
                 android:paddingBottom="@dimen/padding_small"
-                android:layout_marginLeft="@dimen/margin_default"
-                android:id="@+id/tv_name"
+                android:text="dfdfd"
                 android:textColor="@color/White"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
     </FrameLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

@@ -1,175 +1,191 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="5dp"
-    android:background="@drawable/background_product"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <FrameLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp">
-
-        <ImageView
-            android:id="@+id/imv_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/Black" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingRight="@dimen/padding_default">
+                android:layout_height="150dp">
 
-                <FrameLayout
-                    android:id="@+id/frame_km"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/tv_km"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="#33000000"
-                        android:padding="@dimen/padding_default"
-                        android:textColor="@color/White"
-                        android:textSize="@dimen/text_size_default" />
-
-                </FrameLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
+                <ImageView
+                    android:id="@+id/imv_image"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/padding_medium"
-                    android:layout_marginTop="@dimen/padding_default"
-                    android:background="@drawable/shape_radius_discount"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/padding_medium"
-                    android:paddingRight="@dimen/padding_medium">
-
-                    <TextView
-                        android:id="@+id/tv_discount"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="3,000 원 할인"
-                        android:textColor="@color/White"
-                        android:textSize="@dimen/text_size_small" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="bottom"
-                android:orientation="vertical">
+                    android:background="@color/Black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:alpha="100"
-                    android:background="@drawable/gridient"
-                    android:gravity="bottom"
-                    android:orientation="vertical"
-                    android:paddingBottom="@dimen/padding_default"
-                    android:paddingLeft="@dimen/padding_medium">
-
-                    <TextView
-                        android:id="@+id/tv_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/margin_small"
-                        android:text="[종로] Amare"
-                        android:textColor="@color/White"
-                        android:textSize="@dimen/text_size_default"
-                        android:textStyle="bold" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:paddingRight="@dimen/padding_default">
 
-                        <TextView
-                            android:id="@+id/tv_address"
-                            android:layout_width="wrap_content"
+                        <FrameLayout
+                            android:id="@+id/frame_km"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="서울 광진구 군자동 363-1 202호"
-                            android:textColor="@color/White"
-                            android:textSize="@dimen/text_size_small" />
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:id="@+id/tv_km"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="#33000000"
+                                android:padding="@dimen/padding_default"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/text_size_default" />
+
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/padding_medium"
+                            android:layout_marginTop="@dimen/padding_default"
+                            android:background="@drawable/shape_radius_discount"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/padding_medium"
+                            android:paddingRight="@dimen/padding_medium">
+
+                            <TextView
+                                android:id="@+id/tv_discount"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text="3,000 원 할인"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/text_size_small" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="bottom"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:alpha="100"
+                            android:background="@drawable/gridient"
+                            android:gravity="bottom"
+                            android:orientation="vertical"
+                            android:paddingBottom="@dimen/padding_default"
+                            android:paddingLeft="@dimen/padding_medium">
+
+                            <TextView
+                                android:id="@+id/tv_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/margin_small"
+                                android:text="[종로] Amare"
+                                android:textColor="@color/White"
+                                android:textSize="@dimen/text_size_default"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tv_address"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="서울 광진구 군자동 363-1 202호"
+                                    android:textColor="@color/White"
+                                    android:textSize="@dimen/text_size_small" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                 </LinearLayout>
 
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="@dimen/padding_default">
+
+                <TextView
+                    android:id="@+id/tv_price_morning"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:gravity="start"
+                    android:text="조조 0000원"
+                    android:textAlignment="center"
+                    android:textColor="@color/morning_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/LightGrey" />
+
+                <TextView
+                    android:id="@+id/tv_price_lunch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:gravity="start"
+                    android:text="평일 0000원"
+                    android:textAlignment="center"
+                    android:textColor="@color/lunch_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/LightGrey" />
+
+                <TextView
+                    android:id="@+id/tv_price_dinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.3"
+                    android:gravity="start"
+                    android:text="야간 0000원"
+                    android:textAlignment="center"
+                    android:textColor="@color/dinner_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="@dimen/padding_default">
-
-        <TextView
-            android:id="@+id/tv_price_morning"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:gravity="start"
-            android:text="조조 0000원"
-            android:textAlignment="center"
-            android:textColor="@color/morning_text"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/LightGrey" />
-
-        <TextView
-            android:id="@+id/tv_price_lunch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:gravity="start"
-            android:text="평일 0000원"
-            android:textAlignment="center"
-            android:textColor="@color/lunch_text"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="@color/LightGrey" />
-
-        <TextView
-            android:id="@+id/tv_price_dinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.3"
-            android:gravity="start"
-            android:text="야간 0000원"
-            android:textAlignment="center"
-            android:textColor="@color/dinner_text"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
 </LinearLayout>

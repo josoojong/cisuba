@@ -221,8 +221,10 @@ public class HomeFragment extends Fragment {
 
         HashMap<String, Integer> productMap = ProductTypeCode.getInstance().getMap();
         for (Map.Entry<String, Integer> entry : productMap.entrySet()) {
+            if(entry.getValue()!=0){
             LinearLayout tabItem = addTabItem(entry.getKey(), entry.getValue());
-            linTab.addView(tabItem);
+
+            linTab.addView(tabItem);}
         }
     }
 
@@ -234,7 +236,7 @@ public class HomeFragment extends Fragment {
         Button tabBtn = new Button(getActivity());
         tabBtn.setOnClickListener(tabItemClickListener);
         tabBtn.setText(item);
-        tabBtn.setBackgroundColor(getResources().getColor(R.color.tabColor));
+        tabBtn.setBackgroundColor(getResources().getColor(R.color.White));
         tabBtn.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         tabBtn.setTag(position);
 
@@ -263,11 +265,11 @@ public class HomeFragment extends Fragment {
             int itemPosition = (int) tabItem.getTag();
 
             // RESET TAB
-            for(int i=0; i<tabButtonArray.length; i++) {
+            for(int i=1; i<tabButtonArray.length; i++) {
                 tabButtonArray[i].setTextColor(Color.parseColor("#555555"));
             }
 
-            for(int i=0; i<tabSelectorArray.length; i++) {
+            for(int i=1; i<tabSelectorArray.length; i++) {
                 tabSelectorArray[i].setBackgroundColor(Color.parseColor("#ebebebeb"));
             }
 

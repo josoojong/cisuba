@@ -14,148 +14,182 @@
         android:orientation="vertical"></LinearLayout>
 
     <ScrollView
-    android:id="@+id/home_scrollview"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
+        android:id="@+id/home_scrollview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.daimajia.slider.library.SliderLayout
-            android:id="@+id/slider"
-            android:layout_width="match_parent"
-            android:layout_height="200dp" />
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_default"
-            android:layout_marginBottom="@dimen/margin_small"
-            android:orientation="horizontal"
-            android:padding="@dimen/padding_default">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_marginRight="@dimen/margin_default"
-                android:layout_gravity="center|start"
-                android:background="@drawable/gp1"/>
-
-            <TextView
-                android:text="지역별 TOP 4"
-                android:textStyle="bold"
-                android:textColor="@color/Black"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:gravity="center|start"
-                android:layout_height="match_parent" />
-
-            <Spinner
-                android:background="@color/background"
-                android:id="@+id/spn_top"
-                android:layout_width="100dp"
-                android:layout_height="30dp"></Spinner>
-
-        </LinearLayout>
-
-        <GridView
-            android:id="@+id/grv_count_4"
-            android:padding="@dimen/padding_default"
-            android:layout_width="match_parent"
-            android:layout_height="320dp"
-            android:numColumns="2"
-            android:scrollbars="none"
-            android:verticalSpacing="5dp"
-            android:horizontalSpacing="5dp"
-            android:listSelector="@null" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="5dp"
-            android:background="#ebebebeb"/>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:background="@color/White"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <LinearLayout
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/slider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_small"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:orientation="horizontal"
-                android:padding="@dimen/padding_default">
+                android:layout_height="200dp" />
 
-                <ImageView
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
-                    android:layout_marginRight="@dimen/margin_default"
-                    android:layout_gravity="center|start"
-                    android:background="@drawable/gp2"/>
-
-                <TextView
-                    android:text="씨서바 추천"
-                    android:textStyle="bold"
-                    android:textColor="@color/Black"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:gravity="top"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:background="@color/tabColor"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/padding_large">
 
-                <ImageView
-                    android:layout_margin="2dp"
-                    android:background="#ebebebeb"
-                    android:src="@drawable/rsz_btn_arrow"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp" />
-
-                <HorizontalScrollView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/lin_tab"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:orientation="horizontal"/>
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/padding_medium"
+                        android:paddingLeft="@dimen/padding_large"
+                        android:paddingTop="@dimen/padding_medium">
 
-                </HorizontalScrollView>
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center|start"
+                            android:layout_marginRight="@dimen/margin_default"
+                            android:cropToPadding="true"
+                            android:scaleType="fitStart"
+                            android:tint="#3592b0"
+                            app:srcCompat="@drawable/ic_top" />
 
-                <ImageView
-                    android:layout_margin="2dp"
-                    android:src="@drawable/btn_arrow"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp" />
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center|start"
+                            android:text="지역별 TOP 4"
+                            android:textColor="@color/Black"
+                            android:textStyle="bold" />
 
-            </LinearLayout>
+                        <Spinner
+                            android:id="@+id/spn_top"
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+                            android:layout_marginRight="@dimen/padding_medium"
+                            android:background="@color/background"></Spinner>
+
+                    </LinearLayout>
+
+                    <GridView
+                        android:id="@+id/grv_count_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="330dp"
+                        android:elevation="0dp"
+                        android:horizontalSpacing="5dp"
+                        android:listSelector="@null"
+                        android:numColumns="2"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:scrollbars="none"
+                        android:verticalSpacing="5dp" />
+
+                </LinearLayout>
 
 
-            <ListView
-                android:id="@+id/lv_items"
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:divider="@color/White"
-                android:dividerHeight="@dimen/margin_medium"
-                android:padding="10dp"></ListView>
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/padding_large">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/White"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingBottom="@dimen/padding_medium"
+                        android:paddingLeft="@dimen/padding_large"
+                        android:paddingTop="@dimen/padding_medium">
+
+                        <ImageView
+                            android:id="@+id/imageView4"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center|start"
+                            android:layout_marginRight="@dimen/margin_default"
+                            android:tint="#3592b0"
+                            app:srcCompat="@drawable/ic_recommanded" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center|start"
+                            android:text="씨서바 추천"
+                            android:textColor="@color/Black"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/White"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_margin="2dp"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/rsz_btn_arrow" />
+
+                            <HorizontalScrollView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@color/White">
+
+                                <LinearLayout
+                                    android:id="@+id/lin_tab"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="40dp"
+                                    android:background="@color/White"
+                                    android:orientation="horizontal" />
+
+                            </HorizontalScrollView>
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_margin="2dp"
+                                android:background="@android:color/transparent"
+                                android:src="@drawable/btn_arrow" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+
+                    <ListView
+                        android:id="@+id/lv_items"
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+                        android:divider="@color/White"
+                        android:paddingBottom="50dp"
+                        android:paddingTop="10dp"></ListView>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
 
-    </LinearLayout>
-
-</ScrollView>
+    </ScrollView>
 </LinearLayout>

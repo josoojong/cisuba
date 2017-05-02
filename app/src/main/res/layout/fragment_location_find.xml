@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <LinearLayout
@@ -46,13 +47,29 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"/>
 
-    <ListView
-        android:id="@+id/lv_near"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/margin_default"
-        android:layout_weight="1"
-        android:divider="@color/background"
-        android:dividerHeight="@dimen/margin_medium"></ListView>
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/lv_near"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_default"
+            android:layout_weight="1"
+            android:divider="@color/White"></ListView>
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:alpha="0.5"
+            android:background="#00FFFFFF"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/down_arrow_bold" />
+    </FrameLayout>
 
 </LinearLayout>

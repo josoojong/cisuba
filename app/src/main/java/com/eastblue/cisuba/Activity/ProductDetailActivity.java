@@ -246,8 +246,8 @@ public class ProductDetailActivity extends AppCompatActivity {
 
                 for (int i = 0; i < productModel.tagList.size(); i++) {
 
-                    final int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 26, getResources().getDisplayMetrics());
-                    final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics());
+                    final int size = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, getResources().getDisplayMetrics());
+                    final int margin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 5, getResources().getDisplayMetrics());
 
                     ImageView tagView = new ImageView(ProductDetailActivity.this);
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(size, size);
