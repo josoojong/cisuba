@@ -102,13 +102,6 @@ public class MainActivity extends AppCompatActivity {
         nickname = (TextView) findViewById(R.id.drawer_nick);
         profileimage = (CircleImageView) findViewById(R.id.drawer_profile);
 
-        if(SharedPreferenceAdapter.getUserEmail(MainActivity.this).length() != 0) {
-            System.out.println("shared test : "+SharedPreferenceAdapter.getUserEmail(MainActivity.this));
-            System.out.println("shared test : "+SharedPreferenceAdapter.getUserName(MainActivity.this));
-        } else {
-            System.out.println("shared test : length = 0");
-        }
-
     }
 
     @Override
@@ -154,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //eamil
-        if(SharedPreferenceAdapter.getUserName(MainActivity.this).length() != 0) {
+        if(SharedPreferenceAdapter.getUserLogin(MainActivity.this).length() != 0) {
             MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(MainActivity.this));
 
             MainActivity.profileimage.setEnabled(false);

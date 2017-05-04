@@ -28,6 +28,7 @@ import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.eastblue.cisuba.Adapter.ArrayAdapterWithIcon;
+import com.eastblue.cisuba.Adapter.SharedPreferenceAdapter;
 import com.eastblue.cisuba.Manager.NetworkManager;
 import com.eastblue.cisuba.Map.NMapCalloutBasicOverlay;
 import com.eastblue.cisuba.Map.NMapPOIflagType;
@@ -37,6 +38,7 @@ import com.eastblue.cisuba.Model.ProductModel;
 import com.eastblue.cisuba.Network.Product;
 import com.eastblue.cisuba.R;
 import com.eastblue.cisuba.Util.HttpUtil;
+import com.kakao.auth.Session;
 import com.kakao.kakaonavi.KakaoNaviParams;
 import com.kakao.kakaonavi.KakaoNaviService;
 import com.kakao.kakaonavi.Location;
@@ -113,6 +115,9 @@ public class ProductDetailActivity extends AppCompatActivity {
     private double lat;
     private double lng;
 
+    public static String priceMorning,priceLunch,priceDinner;
+    public static String detailAddress, partner_Name, highlightAddress,Thumbnail,pk_id;
+
     final String CLIENT_ID = "N_PMI_hG0G1FAFhg8alc";
 
     Location destination;
@@ -160,12 +165,20 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     }
 
-    /*@OnClick(R.id.btn_pay)
+    @OnClick(R.id.btn_pay)
     public void openPayWeb() {
-        //Intent payWebActivity = new Intent(ProductDetailActivity.this, PaymentWebActivity.class);
-        //startActivity(payWebActivity);
-        startActivity(new Intent(this, PaymentWebActivity.class));
-    }*/
+        //naver
+        if (LoginActivity.mOAuthLoginModule == null && Session.getCurrentSession().isClosed()
+                && SharedPreferenceAdapter.getUserLogin(ProductDetailActivity.this).length() == 0) {
+            Toast.makeText(this, "로그인을 하세요.", Toast.LENGTH_SHORT).show();
+        } /*else if (LoginActivity.mOAuthLoginModule != null) {
+            if (!LoginActivity.mOAuthLoginModule.getState(this).toString().equals("OK")) {
+                Toast.makeText(this, "로그인을 하세요.", Toast.LENGTH_SHORT).show();
+            }
+        }*/ else {
+            startActivity(new Intent(this, PaymentActivity.class));
+        }
+    }
 
     @OnClick(R.id.frame_map)
     public void openMapDetail() {
@@ -230,6 +243,15 @@ public class ProductDetailActivity extends AppCompatActivity {
                 tvPriceLunch.setText("평일 " + productModel.lunchPrice + "원");
                 tvPriceDinner.setText("야간 " + productModel.dinnerPrice + "원");
                 tvPriceDiscount.setText(productModel.discount + " 원 할인");
+
+                priceMorning = productModel.morningPrice;
+                priceLunch = productModel.lunchPrice;
+                priceDinner = productModel.dinnerPrice;
+                highlightAddress = productModel.highlightAddress;
+                partner_Name = productModel.partnerName;
+                detailAddress = productModel.detailAddress;
+                Thumbnail = productModel.mainThumbnail;
+                pk_id = productModel.id;
 
                 tvPhone.setText(productModel.phone);
                 //tvUseAbout.setText(productModel.useAbout);

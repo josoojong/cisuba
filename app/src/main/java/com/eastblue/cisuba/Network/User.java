@@ -23,19 +23,6 @@ import retrofit.http.POST;
  */
 
 public interface User {
-/*
-    @GET("/insert/{email}/{password}/{username}/{phone}")
-    void getPartnerItem(
-            @Path("pk") String pk,
-            Callback<UserModel> callback
-    );
-*/
-    @GET("/users/{email}")
-    void get_user_inform(
-            @Path("email") String email,
-            Callback<UserModel> callback
-    );
-
     @FormUrlEncoded
     @POST("/members")
     void requestLogin(

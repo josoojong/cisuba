@@ -280,6 +280,8 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                             if (codeModel.code.equals("1")) {
                                 SharedPreferenceAdapter.setUserEmail(LoginActivity.this, et_email.getText().toString());
                                 SharedPreferenceAdapter.setUserName(LoginActivity.this, codeModel.user.username);
+                                SharedPreferenceAdapter.setUserPhone(LoginActivity.this, codeModel.user.phone);
+                                SharedPreferenceAdapter.setUserLogin(LoginActivity.this,"True");
 
                                 ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
                                 MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
@@ -411,6 +413,8 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                     ProfileFragment.profileimage.setEnabled(false);
                     ProfileFragment.logout.setEnabled(true);
                     requestMe();
+                    SharedPreferenceAdapter.setUserName(LoginActivity.this, userProfile.getNickname());
+                    SharedPreferenceAdapter.setUserEmail(LoginActivity.this, userProfile.getEmail());
                     finish();
                 }
             });
@@ -638,6 +642,9 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                 }
             }).start();
 
+            SharedPreferenceAdapter.setUserEmail(LoginActivity.this, email);
+            SharedPreferenceAdapter.setUserName(LoginActivity.this, name);
+
             MainActivity.profileimage.setEnabled(false);
             ProfileFragment.profileimage.setEnabled(false);
             ProfileFragment.logout.setEnabled(true);
@@ -756,24 +763,6 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             }
             return retBitmap;
         }
-    }
-
-
-    void getItem(String email) {
-        System.out.println("login_test");
-
-        HttpUtil.api(User.class).get_user_inform(email, new Callback<UserModel>() {
-            @Override
-            public void success(UserModel userModel, Response response) {
-
-            }
-
-            @Override
-            public void failure(RetrofitError error) {
-
-            }
-        });
-
     }
 
     public static String Decrypt(String text, String key) throws Exception
