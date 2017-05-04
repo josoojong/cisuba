@@ -57,7 +57,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/margin_default"
             android:layout_weight="1"
-            android:divider="@color/White"></ListView>
+            android:divider="@android:color/transparent"
+            android:background="@color/White"></ListView>
 
         <ImageButton
             android:id="@+id/imageButton"

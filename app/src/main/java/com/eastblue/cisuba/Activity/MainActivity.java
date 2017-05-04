@@ -287,6 +287,11 @@ public class MainActivity extends AppCompatActivity {
         dtToggle.syncState();
     }
 
+    @OnClick(R.id.lin_ticket)
+    public void goTicket() {
+        startActivity(new Intent(this, TicketActivity.class));
+    }
+
     @OnClick(R.id.lin_notice)
     public void goNotice() {
         startActivity(new Intent(this, NoticeActivity.class).putExtra("TYPE", "NOTICE"));

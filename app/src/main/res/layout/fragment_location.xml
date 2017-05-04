@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <!--<LinearLayout-->
@@ -34,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -69,7 +71,18 @@
                 <!--android:divider="@color/background"-->
                 <!--android:dividerHeight="@dimen/margin_default"-->
                 <!--android:padding="@dimen/padding_medium"></ListView>-->
-        </LinearLayout>
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_gravity="bottom|right"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"
+                android:alpha="0.5"
+                android:background="#00FFFFFF"
+                android:scaleType="fitStart"
+                app:srcCompat="@drawable/down_arrow_bold" />
+        </FrameLayout>
 
 
         <ProgressBar

@@ -370,6 +370,8 @@ public class LocationFragment extends Fragment {
         mLocation.setLatitude(lat);
         mLocation.setLongitude(lng);
 
+        progressBar.setVisibility(View.VISIBLE);
+
         HttpUtil.api(Product.class).nearProduct(page, size, area, filter, String.valueOf(lat), String.valueOf(lng), new Callback<List<ProductModel>>() {
             @Override
             public void success(List<ProductModel> productModels, Response response) {
@@ -412,10 +414,14 @@ public class LocationFragment extends Fragment {
                 poiData.endPOIdata();
                 poiDataOverlay = mOverlayManager.createPOIdataOverlay(poiData, null);
                 Log.d("sizecheck", String.valueOf(productModels.size()));
-                if (productModels.size() > 0) {
-                    poiDataOverlay.showAllPOIdata(0);
-                }
+//                if (productModels.size() > 0) {
+//                    poiDataOverlay.showAllPOIdata(9);
+//                }
 
+                progressBar.setVisibility(View.INVISIBLE);
+                if (myLocation != null) {
+                    mMapView.getMapController().setMapCenter(myLocation.getLongitude(), myLocation.getLatitude(), 9);
+                }
                 mOverlayManager.setOnCalloutOverlayViewListener(new NMapOverlayManager.OnCalloutOverlayViewListener() {
                     @Override
                     public View onCreateCalloutOverlayView(NMapOverlay nMapOverlay, NMapOverlayItem nMapOverlayItem, Rect rect) {
@@ -514,7 +520,7 @@ public class LocationFragment extends Fragment {
             tv_km.setVisibility(View.GONE);
         }
 
-        tv_name.setText("[" + LocationCode.getInstance().getLocation(item.gubunAdress) + "] " + item.partnerName);
+        tv_name.setText("[" + item.highlightAddress + "] " + item.partnerName);
         tv_address.setText(item.detailAddress);
         tv_price_morning.setText("조조 " + item.morningPrice + "원");
         tv_price_lunch.setText("평일 " + item.lunchPrice + "원");
@@ -711,7 +717,6 @@ public class LocationFragment extends Fragment {
 
                 //mMapController.animateTo(_myLocation);
                 myLocation = _myLocation;
-
                 progressBar.setVisibility(View.INVISIBLE);
             }
 
@@ -773,6 +778,7 @@ public class LocationFragment extends Fragment {
         mMapContext.onResume();
         if (myLocation != null) {
             mMapController.animateTo(myLocation);
+            mMapView.getMapController().setMapCenter(myLocation.getLongitude(), myLocation.getLatitude(), 9);
         }
         Log.d("frag", "onResume");
     }

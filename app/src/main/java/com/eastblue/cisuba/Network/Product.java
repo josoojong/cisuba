@@ -2,6 +2,7 @@ package com.eastblue.cisuba.Network;
 
 import com.eastblue.cisuba.Model.BannerModel;
 import com.eastblue.cisuba.Model.ProductModel;
+import com.eastblue.cisuba.Model.TicketModel;
 import com.squareup.okhttp.Call;
 
 import java.util.List;
@@ -71,5 +72,11 @@ public interface Product {
     @GET("/get_main_banner")
     void getMainBanner(
         Callback<List<BannerModel>> callback
+    );
+
+    @GET("/ticket")
+    void getTicket(
+            @Query("name") String name,
+            Callback<List<TicketModel>> callback
     );
 }

@@ -165,7 +165,7 @@ public class NearAdapter extends BaseAdapter {
         }
 
         public void bindObject(ProductModel item) {
-            tvName.setText("[" + LocationCode.getInstance().getLocation(item.gubunAdress) + "] " + item.partnerName);
+            tvName.setText("[" + item.highlightAddress + "] " + item.partnerName);
             tvAddress.setText(item.shortAddress);
             tvDiscount.setText(item.discount + " 원 할인");
             tvPriceMorning.setText("조조 " + Integer.parseInt(item.morningPrice) + "원");
