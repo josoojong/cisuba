@@ -265,6 +265,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         } else {
 
             HttpUtil.api(User.class).requestLogin(
+                    "0",
                     et_email.getText().toString(),
                     et_password.getText().toString(),
                     new Callback<CodeModel>() {
@@ -314,18 +315,38 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         AuthService.requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
             @Override
             public void onSessionClosed(ErrorResult errorResult) {
-
+                System.out.println("login accesstoken session closed");
             }
 
             @Override
             public void onNotSignedUp() {
-
+                System.out.println("login accesstoken notsigned");
             }
 
             @Override
             public void onSuccess(AccessTokenInfoResponse result) {
                 Log.d("login", result.toString());
-                System.out.println("login accesstoken");
+                HttpUtil.api(User.class).requestApILogin(
+                        "1",
+                        result.getUserId(),
+                        new Callback<CodeModel>() {
+                            @Override
+                            public void success(CodeModel codeModel, Response response) {
+                                if (codeModel.code.equals("1")) {
+                                    System.out.println("login_test kakao success");
+
+                                } else {
+                                    System.out.println("login_test kakao : "+codeModel.message);
+
+                                }
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                System.out.println(error);
+                            }
+                        }
+                );
             }
         });
     }
@@ -416,7 +437,9 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                     requestMe();
                     SharedPreferenceAdapter.setUserName(LoginActivity.this, userProfile.getNickname());
                     SharedPreferenceAdapter.setUserEmail(LoginActivity.this, userProfile.getEmail());
+
                     requestAccessTokenInfo();
+
                     finish();
                 }
             });
@@ -498,56 +521,6 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
     /**
      * Maver
      */
-    /*
-    private void InitializeNaverAPI( )
-    {
-        mOAuthLoginModule = OAuthLogin.getInstance( );
-        mOAuthLoginModule.init(
-                this,
-                "CVx3JW6nJ6ZFulFUzCYj",
-                "aTQXyVrHVK",
-                "네이버 아이디로 로그인"
-        );
-
-        // 네이버 로그인 버튼 리스너 등록
-        OAuthLoginButton naverLoginButton = ( OAuthLoginButton ) findViewById( R.id.buttonOAuthLoginImg );
-        naverLoginButton.setOAuthLoginHandler( new OAuthLoginHandler( )
-        {
-            @Override
-            public void run(final boolean b )
-            {
-                if ( b )
-                {
-                    final String token = mOAuthLoginModule.getAccessToken( LoginActivity.this );
-                    new Thread( new Runnable( )
-                    {
-                        @Override
-                        public void run( )
-                        {
-                            String response = mOAuthLoginModule.requestApi( LoginActivity.this, token, "https://openapi.naver.com/v1/nid/me" );
-                            try
-                            {
-                                JSONObject json = new JSONObject( response );
-                                // response 객체에서 원하는 값 얻어오기
-                                String email = json.getJSONObject( "response" ).getString( "email" );
-                                // 액티비티 이동 등 원하는 함수 호출
-                                //Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                //startActivity(intent);
-                                new RequestApiTask().execute(); //로그인이 성공하면  네이버에 계정값들을 가져온다.
-                                finish();
-                            } catch ( JSONException e )
-                            {
-                                e.printStackTrace( );
-                            }
-                        }
-                    } ).start( );
-                }x
-                else
-                {
-                }
-            }
-        } );
-    }*/
     private void initSetting() {
         //OAuthLoginButton naverLoginButton = ( OAuthLoginButton ) findViewById( R.id.buttonOAuthLoginImg );
         ViewGroup naverLoginButton = (ViewGroup) findViewById(R.id.naver_login);
@@ -650,6 +623,28 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             MainActivity.profileimage.setEnabled(false);
             ProfileFragment.profileimage.setEnabled(false);
             ProfileFragment.logout.setEnabled(true);
+
+            HttpUtil.api(User.class).requestApILogin(
+                    "2",
+                    Integer.parseInt(id),
+                    new Callback<CodeModel>() {
+                        @Override
+                        public void success(CodeModel codeModel, Response response) {
+                            if (codeModel.code.equals("1")) {
+                                System.out.println("login_test naver success");
+
+                            } else {
+                                System.out.println("login_test naver : "+codeModel.message);
+
+                            }
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            System.out.println(error);
+                        }
+                    }
+            );
 
             if (email == null) {
                 Toast.makeText(LoginActivity.this,

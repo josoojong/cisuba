@@ -26,8 +26,19 @@ public interface User {
     @FormUrlEncoded
     @POST("/members")
     void requestLogin(
+            @Field("type") String type,
             @Field("email") String email,
             @Field("password") String password,
+            Callback<CodeModel> callback
+
+    );
+
+
+    @FormUrlEncoded
+    @POST("/members")
+    void requestApILogin(
+            @Field("type") String type,
+            @Field("id") long id,
             Callback<CodeModel> callback
 
     );
