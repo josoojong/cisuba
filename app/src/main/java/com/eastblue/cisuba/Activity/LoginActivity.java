@@ -223,13 +223,6 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         mOAuthLoginModule.init(mContext, OAUTH_CLIENT_ID, OAUTH_CLIENT_SECRET, OAUTH_CLIENT_NAME);
         initSetting();
 
-        /*close = (ImageButton) findViewById(R.id.login_close);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });*/
         join = (TextView) findViewById(R.id.btn_join);
         join.setText(Html.fromHtml("<u>" + "회원가입" + "</u>"));
 
@@ -246,6 +239,9 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         finish();
     }
 
+    /*
+    Email
+    */
     @OnClick(R.id.email_login)
     void login_email() {
 
@@ -264,9 +260,6 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             e.printStackTrace();
         }*/
 
-
-        System.out.println("login_test");
-
         if(et_email.getText().toString().length() == 0 || et_password.getText().toString().length() == 0) {
 
         } else {
@@ -281,7 +274,11 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                                 SharedPreferenceAdapter.setUserEmail(LoginActivity.this, et_email.getText().toString());
                                 SharedPreferenceAdapter.setUserName(LoginActivity.this, codeModel.user.username);
                                 SharedPreferenceAdapter.setUserPhone(LoginActivity.this, codeModel.user.phone);
-                                SharedPreferenceAdapter.setUserLogin(LoginActivity.this,"True");
+                                //if(et_email.getText().toString().equals("owner")){
+                                //    SharedPreferenceAdapter.setOwnerLogin(LoginActivity.this, "True");
+                                //} else {
+                                    SharedPreferenceAdapter.setUserLogin(LoginActivity.this, "True");
+                                //}
 
                                 ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
                                 MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
@@ -310,6 +307,9 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         startActivity(new Intent(this, JoinActivity.class));
     }
 
+    /*
+    Kakao
+    */
     private void requestAccessTokenInfo() {
         AuthService.requestAccessTokenInfo(new ApiResponseCallback<AccessTokenInfoResponse>() {
             @Override
@@ -325,6 +325,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             @Override
             public void onSuccess(AccessTokenInfoResponse result) {
                 Log.d("login", result.toString());
+                System.out.println("login accesstoken");
             }
         });
     }
@@ -415,6 +416,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                     requestMe();
                     SharedPreferenceAdapter.setUserName(LoginActivity.this, userProfile.getNickname());
                     SharedPreferenceAdapter.setUserEmail(LoginActivity.this, userProfile.getEmail());
+                    requestAccessTokenInfo();
                     finish();
                 }
             });
@@ -539,7 +541,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                             }
                         }
                     } ).start( );
-                }
+                }x
                 else
                 {
                 }

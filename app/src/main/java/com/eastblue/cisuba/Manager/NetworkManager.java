@@ -16,8 +16,8 @@ import retrofit.converter.GsonConverter;
  */
 public class NetworkManager {
     //public static final String SERVER_URL = "http://172.30.1.25:8081";
-    public static final String SERVER_URL = "http://172.30.1.1:8081";
-    //public static final String SERVER_URL = "http://172.30.1.44:8081";
+    //public static final String SERVER_URL = "http://172.30.1.1:8081";
+    public static final String SERVER_URL = "http://14.52.117.135:8081";
 
 
     static NetworkManager networkManager;

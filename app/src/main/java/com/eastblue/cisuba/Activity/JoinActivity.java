@@ -66,7 +66,7 @@ public class JoinActivity extends AppCompatActivity {
                                 et_email.getText().toString(),
                                 et_password.getText().toString(),
                                 et_name.getText().toString(),
-                                "1111",
+                                "",
                                 new Callback<CodeModel>() {
                                     @Override
                                     public void success(CodeModel codeModel, Response response) {
