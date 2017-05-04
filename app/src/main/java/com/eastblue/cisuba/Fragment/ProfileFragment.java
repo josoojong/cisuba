@@ -129,6 +129,7 @@ public class ProfileFragment extends Fragment {
                             @Override
                             public void onCompleteLogout() {
                                 requestMe();
+                                SharedPreferenceAdapter.clearUserEmail(getActivity());
                                 MainActivity.profileimage.setEnabled(true);
                                 profileimage.setEnabled(true);
                             }
@@ -145,7 +146,7 @@ public class ProfileFragment extends Fragment {
                             logout.setEnabled(false);
                         }
 
-                        if(SharedPreferenceAdapter.getUserName(getActivity()).length() != 0) {
+                        if(SharedPreferenceAdapter.getUserLogin(getActivity()).length() != 0) {
                             SharedPreferenceAdapter.clearUserEmail(getActivity());
 
                             nickname.setText("로그인을 하세요.");
@@ -215,7 +216,7 @@ public class ProfileFragment extends Fragment {
 
 
 
-        if(SharedPreferenceAdapter.getUserName(getActivity()).length() != 0) {
+        if(SharedPreferenceAdapter.getUserLogin(getActivity()).length() != 0) {
             ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(getActivity()));
             MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(getActivity()));
 

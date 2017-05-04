@@ -5,7 +5,7 @@ android {
         release {
             keyAlias 'cisuba'
             keyPassword 'dnjswndus1'
-            storeFile file('/Users/Sung/Desktop/EastBlue/cisuba.jks')
+            storeFile file('/Users/josujong/Desktop/Eastblue/cisuba.jks')
             storePassword 'dnjswndus1'
         }
     }

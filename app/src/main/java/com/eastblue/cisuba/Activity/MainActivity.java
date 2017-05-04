@@ -102,13 +102,6 @@ public class MainActivity extends AppCompatActivity {
         nickname = (TextView) findViewById(R.id.drawer_nick);
         profileimage = (CircleImageView) findViewById(R.id.drawer_profile);
 
-        if(SharedPreferenceAdapter.getUserEmail(MainActivity.this).length() != 0) {
-            System.out.println("shared test : "+SharedPreferenceAdapter.getUserEmail(MainActivity.this));
-            System.out.println("shared test : "+SharedPreferenceAdapter.getUserName(MainActivity.this));
-        } else {
-            System.out.println("shared test : length = 0");
-        }
-
     }
 
     @Override
@@ -154,11 +147,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //eamil
-        if(SharedPreferenceAdapter.getUserName(MainActivity.this).length() != 0) {
+        if(SharedPreferenceAdapter.getUserEmail(MainActivity.this).length() != 0) {
             MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(MainActivity.this));
 
             MainActivity.profileimage.setEnabled(false);
         }
+
         super.onResume();
     }
 
@@ -172,10 +166,10 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mTabAdapter);
         mTabLayout.setupWithViewPager(mViewPager);
 
-        for (int i = 0; i < mTabLayout.getTabCount(); i++) {
-            TabLayout.Tab tab = mTabLayout.getTabAt(i);
-            tab.setCustomView(mTabAdapter.getTabView(i));
-        }
+            for (int i = 0; i < mTabLayout.getTabCount(); i++) {
+                TabLayout.Tab tab = mTabLayout.getTabAt(i);
+                tab.setCustomView(mTabAdapter.getTabView(i));
+            }
 
         mTabLayout.getTabAt(0).select();
 

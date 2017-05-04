@@ -4,11 +4,11 @@
     android:background="@color/LightGrey"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="@color/White"
-        android:orientation="vertical"></LinearLayout>
+        android:orientation="vertical"></LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="125dp"
@@ -19,9 +19,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="70dp"
+                android:layout_height="30dp"
+                android:gravity="center"
+                android:text="업주전용"
+                android:textColor="@color/White"
+                android:background="@drawable/gp_owner"/>
 
             <ImageButton
-                android:id="@+id/btn_logout"
+                android:id="@+id/ow_btn_logout"
                 android:background="@drawable/ic_logout"
                 android:layout_gravity="end"
                 android:layout_width="32dp"
@@ -34,14 +42,14 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_marginTop="@dimen/margin_large"
-                    android:id="@+id/imv_profile"
+                    android:id="@+id/ow_imv_profile"
                     android:layout_gravity="center_horizontal"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/ic_launcher"/>
+                    android:src="@drawable/profile_pic_sample"/>
 
                 <TextView
-                    android:id="@+id/tv_name"
+                    android:id="@+id/ow_tv_name"
                     android:text="로그인을 하세요."
                     android:textColor="@color/White"
                     android:textStyle="bold"
@@ -57,7 +65,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lin_notice"
+        android:id="@+id/ow_lin_payment_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/White"
@@ -65,7 +73,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="공지사항"
+            android:text="이용권 결제내역"
             android:textColor="@color/Black"
             android:textStyle="bold"
             android:gravity="center|start"
@@ -82,7 +90,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/lin_faq"
+        android:id="@+id/ow_lin_ticket_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/White"
@@ -90,7 +98,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="FAQ"
+            android:text="이용권 조회"
             android:textColor="@color/Black"
             android:textStyle="bold"
             android:gravity="center|start"
@@ -120,18 +128,18 @@
         android:orientation="vertical"
         android:background="@color/White">
 
-        <ImageButton
-            android:id="@+id/btn_request_partner"
-            android:background="@drawable/button_banner_partner"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginBottom="@dimen/margin_default"
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:background="@drawable/img_banner" />
 
         <ImageButton
-            android:id="@+id/btn_invite_kakao"
-            android:background="@drawable/button_invite_kakao"
+            android:id="@+id/ow_btn_request_partner"
             android:layout_width="match_parent"
-            android:layout_height="60dp" />
+            android:layout_height="60dp"
+            android:layout_marginBottom="@dimen/margin_default"
+            android:background="@drawable/button_banner_partner" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -141,7 +149,7 @@
             android:paddingLeft="10dp">
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/ow_textView1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="씨서바"
@@ -155,14 +163,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/ow_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="(주)이스트블루"
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/textView41"
+                    android:id="@+id/ow_textView41"
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -170,7 +178,7 @@
                     android:background="@color/DarkGray"
                     android:textSize="9sp" />
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/ow_textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -185,14 +193,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView32"
+                    android:id="@+id/ow_textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="대표이사 : 원주연"
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/ow_textView4"
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -201,7 +209,7 @@
                     android:textSize="9sp" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/ow_textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -216,7 +224,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/ow_textView32"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="통신판매업 신고번호 : 2017-서울서초-0197"
@@ -230,14 +238,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/ow_textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이메일 : cisuba@naver.com"
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/ow_textView7"
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -246,7 +254,7 @@
                     android:textSize="9sp" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/ow_textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="5dp"
@@ -254,7 +262,7 @@
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/tv_office_phone"
+                    android:id="@+id/ow_tv_office_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="1666-8428"
@@ -270,14 +278,14 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/tv_terms"
+                    android:id="@+id/ow_tv_terms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="이용약관"
                     android:textSize="10sp" />
 
                 <TextView
-                    android:id="@+id/textView11"
+                    android:id="@+id/ow_textView11"
                     android:layout_width="1dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -286,7 +294,7 @@
                     android:textSize="9sp" />
 
                 <TextView
-                    android:id="@+id/tv_privacy"
+                    android:id="@+id/ow_tv_privacy"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -295,7 +303,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/ow_textView13"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
