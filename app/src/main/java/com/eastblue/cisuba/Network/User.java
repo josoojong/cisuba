@@ -44,6 +44,15 @@ public interface User {
     );
 
     @FormUrlEncoded
+    @POST("/members")
+    void requestNaverApILogin(
+            @Field("type") String type,
+            @Field("access_token") String access_token,
+            Callback<CodeModel> callback
+
+    );
+
+    @FormUrlEncoded
     @POST("/members/new")
     void requestJoin(
             @Field("email") String email,

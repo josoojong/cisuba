@@ -202,7 +202,8 @@
                 android:nextFocusDown="@+id/next"
                 android:paddingLeft="10dp"
                 android:singleLine="true"
-                android:textSize="13sp" />
+                android:textSize="13sp"
+                android:password="true"/>
 
             <Button
                 android:id="@+id/email_login"

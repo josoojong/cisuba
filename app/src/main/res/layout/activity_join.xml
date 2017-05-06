@@ -87,7 +87,8 @@
             android:textSize="13sp"
             android:nextFocusDown="@+id/next"
             android:singleLine = "true"
-            android:lines = "1" />
+            android:lines = "1"
+            android:password="true"/>
 
         <EditText
             android:id="@+id/input_join_pass_config"
@@ -105,7 +106,8 @@
             android:textSize="13sp"
             android:nextFocusDown="@+id/next"
             android:singleLine = "true"
-            android:lines = "1" />
+            android:lines = "1"
+            android:password="true"/>
 
         <EditText
             android:id="@+id/input_join_name"

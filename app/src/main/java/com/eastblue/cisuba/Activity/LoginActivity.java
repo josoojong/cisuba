@@ -556,6 +556,27 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                                 .toString());
 
                 new RequestApiTask().execute(); //로그인이 성공하면  네이버에 계정값들을 가져온다.
+                HttpUtil.api(User.class).requestNaverApILogin(
+                        "2",
+                        accessToken,
+                        new retrofit.Callback<CodeModel>() {
+                            @Override
+                            public void success(CodeModel codeModel, Response response) {
+                                if (codeModel.code.equals("1")) {
+                                    System.out.println("login_test naver success");
+
+                                } else {
+                                    System.out.println("login_test naver : "+codeModel.message);
+
+                                }
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                System.out.println(error);
+                            }
+                        }
+                );
                 finish();
             } else {
                 String errorCode = mOAuthLoginModule.getLastErrorCode(
@@ -624,7 +645,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             ProfileFragment.profileimage.setEnabled(false);
             ProfileFragment.logout.setEnabled(true);
 
-            HttpUtil.api(User.class).requestApILogin(
+            /*HttpUtil.api(User.class).requestApILogin(
                     "2",
                     Integer.parseInt(id),
                     new Callback<CodeModel>() {
@@ -644,7 +665,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                             System.out.println(error);
                         }
                     }
-            );
+            );*/
 
             if (email == null) {
                 Toast.makeText(LoginActivity.this,
