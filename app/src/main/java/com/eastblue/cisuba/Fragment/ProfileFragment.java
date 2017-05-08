@@ -132,6 +132,7 @@ public class ProfileFragment extends Fragment {
                                 SharedPreferenceAdapter.clearUserEmail(getActivity());
                                 MainActivity.profileimage.setEnabled(true);
                                 profileimage.setEnabled(true);
+                                SharedPreferenceAdapter.clearUserEmail(getActivity());
                             }
                         });
 
@@ -144,6 +145,7 @@ public class ProfileFragment extends Fragment {
                             MainActivity.profileimage.setEnabled(true);
                             profileimage.setEnabled(true);
                             logout.setEnabled(false);
+                            SharedPreferenceAdapter.clearUserEmail(getActivity());
                         }
 
                         if(SharedPreferenceAdapter.getUserLogin(getActivity()).length() != 0) {

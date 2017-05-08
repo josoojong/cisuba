@@ -18,7 +18,8 @@ public interface Payment {
     void requestPay(
             @Field("p_id") String p_id,
             @Field("count") String count,
-            @Field("type") String type,
+            @Field("p_type") String p_type,
+            @Field("i_type") String i_type,
             @Field("email") String email,
             @Field("pay_method") String pay_method,
             Callback<CodeModel> callback

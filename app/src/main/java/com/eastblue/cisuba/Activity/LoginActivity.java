@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -23,6 +24,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,7 +84,7 @@ import retrofit.client.Response;
 import static com.nhn.android.naverlogin.OAuthLogin.mOAuthLoginHandler;
 import static java.security.AccessController.getContext;
 
-public class LoginActivity extends AppCompatActivity {// implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {// implements View.OnClickListener {
 
     private ISessionCallback callback;
 
@@ -134,6 +136,8 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
 
     String loginId, loginPwd;
 
+    private boolean is_owner = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,6 +147,9 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
 
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
+
+        RadioGroup rg = (RadioGroup)findViewById(R.id.login_radiogroup);
+        rg.setOnCheckedChangeListener(this);
 
 
         callback = new SessionCallback();
@@ -164,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN: {
-                        ivnaver.setImageResource(R.drawable.ic_naver_selected);
+                        //ivnaver.setImageResource(R.drawable.ic_naver_selected);
                         naverLoginButton.setBackgroundResource(R.drawable.box_selected);
                         tvnaver.setTextColor(Color.parseColor("#1a9eb8"));
                         break;
@@ -190,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 switch (motionEvent.getAction()) {
                     case MotionEvent.ACTION_DOWN: {
-                        ivkakao.setImageResource(R.drawable.ic_kakao_selected);
+                        //ivkakao.setImageResource(R.drawable.ic_kakao_selected);
                         kakaoLoginButton.setBackgroundResource(R.drawable.box_selected);
                         tvkakao.setTextColor(Color.parseColor("#1a9eb8"));
                         break;
@@ -239,6 +246,21 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
         finish();
     }
 
+    @Override
+    public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+        switch (i) {
+            case R.id.rb_general:
+                Toast.makeText(this,"general",Toast.LENGTH_SHORT).show();
+                is_owner = false;
+                break;
+
+            case R.id.rb_owner:
+                Toast.makeText(this,"owner",Toast.LENGTH_SHORT).show();
+                is_owner = true;
+                break;
+        }
+    }
+
     /*
     Email
     */
@@ -264,42 +286,82 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
 
         } else {
 
-            HttpUtil.api(User.class).requestLogin(
-                    "0",
-                    et_email.getText().toString(),
-                    et_password.getText().toString(),
-                    new Callback<CodeModel>() {
-                        @Override
-                        public void success(CodeModel codeModel, Response response) {
-                            if (codeModel.code.equals("1")) {
-                                SharedPreferenceAdapter.setUserEmail(LoginActivity.this, et_email.getText().toString());
-                                SharedPreferenceAdapter.setUserName(LoginActivity.this, codeModel.user.username);
-                                SharedPreferenceAdapter.setUserPhone(LoginActivity.this, codeModel.user.phone);
-                                //if(et_email.getText().toString().equals("owner")){
-                                //    SharedPreferenceAdapter.setOwnerLogin(LoginActivity.this, "True");
-                                //} else {
-                                    SharedPreferenceAdapter.setUserLogin(LoginActivity.this, "True");
-                                //}
+            if(is_owner) {  //partner
+                HttpUtil.api(User.class).requestLogin(
+                        "3",
+                        et_email.getText().toString(),
+                        et_password.getText().toString(),
+                        new Callback<CodeModel>() {
+                            @Override
+                            public void success(CodeModel codeModel, Response response) {
+                                if (codeModel.code.equals("1")) {
+                                    SharedPreferenceAdapter.setUserEmail(LoginActivity.this, et_email.getText().toString());
+                                    SharedPreferenceAdapter.setUserType(LoginActivity.this, "3");
+                                    SharedPreferenceAdapter.setUserName(LoginActivity.this,codeModel.user.u_name);
+                                    //if(et_email.getText().toString().equals("owner")){
+                                    //    SharedPreferenceAdapter.setOwnerLogin(LoginActivity.this, "True");
+                                    //} else {
+                                    SharedPreferenceAdapter.setOwnerLogin(LoginActivity.this, "True");
+                                    //}
 
-                                ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
-                                MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
+                                    /*MainActivity.profileimage.setEnabled(false);
+                                    ProfileFragment.profileimage.setEnabled(false);
+                                    ProfileFragment.logout.setEnabled(true);*/
+                                    Intent intent = new Intent(LoginActivity.this, OwnerMainActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    System.out.println("login_test partner : "+codeModel.message);
+                                }
+                            }
 
-                                MainActivity.profileimage.setEnabled(false);
-                                ProfileFragment.profileimage.setEnabled(false);
-                                ProfileFragment.logout.setEnabled(true);
-                                finish();
-                            } else {
-
+                            @Override
+                            public void failure(RetrofitError error) {
+                                System.out.println("login_test failure");
+                                System.out.println(error);
                             }
                         }
+                );
 
-                        @Override
-                        public void failure(RetrofitError error) {
-                            System.out.println("login_test failure");
-                            System.out.println(error);
+            } else { //general
+                HttpUtil.api(User.class).requestLogin(
+                        "0",
+                        et_email.getText().toString(),
+                        et_password.getText().toString(),
+                        new Callback<CodeModel>() {
+                            @Override
+                            public void success(CodeModel codeModel, Response response) {
+                                if (codeModel.code.equals("1")) {
+                                    SharedPreferenceAdapter.setUserEmail(LoginActivity.this, et_email.getText().toString());
+                                    SharedPreferenceAdapter.setUserName(LoginActivity.this, codeModel.user.u_name);
+                                    SharedPreferenceAdapter.setUserPhone(LoginActivity.this, codeModel.user.u_phone);
+                                    SharedPreferenceAdapter.setUserType(LoginActivity.this, "0");
+                                    //if(et_email.getText().toString().equals("owner")){
+                                    //    SharedPreferenceAdapter.setOwnerLogin(LoginActivity.this, "True");
+                                    //} else {
+                                    SharedPreferenceAdapter.setUserLogin(LoginActivity.this, "True");
+                                    //}
+
+                                    ProfileFragment.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
+                                    MainActivity.nickname.setText(SharedPreferenceAdapter.getUserName(LoginActivity.this));
+
+                                    MainActivity.profileimage.setEnabled(false);
+                                    ProfileFragment.profileimage.setEnabled(false);
+                                    ProfileFragment.logout.setEnabled(true);
+                                    finish();
+                                } else {
+                                    System.out.println("login_test email : "+codeModel.message);
+                                }
+                            }
+
+                            @Override
+                            public void failure(RetrofitError error) {
+                                System.out.println("login_test failure");
+                                System.out.println(error);
+                            }
                         }
-                    }
-            );
+                );
+            }
         }
     }
 
@@ -326,6 +388,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
             @Override
             public void onSuccess(AccessTokenInfoResponse result) {
                 Log.d("login", result.toString());
+                SharedPreferenceAdapter.setUserType(LoginActivity.this, "1");
                 HttpUtil.api(User.class).requestApILogin(
                         "1",
                         result.getUserId(),
@@ -334,6 +397,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                             public void success(CodeModel codeModel, Response response) {
                                 if (codeModel.code.equals("1")) {
                                     System.out.println("login_test kakao success");
+                                    SharedPreferenceAdapter.setUserType(LoginActivity.this, "1");
 
                                 } else {
                                     System.out.println("login_test kakao : "+codeModel.message);
@@ -555,6 +619,8 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                                 + mOAuthLoginModule.getState(mContext)
                                 .toString());
 
+                SharedPreferenceAdapter.setUserType(LoginActivity.this, "2");
+
                 new RequestApiTask().execute(); //로그인이 성공하면  네이버에 계정값들을 가져온다.
                 HttpUtil.api(User.class).requestNaverApILogin(
                         "2",
@@ -564,6 +630,7 @@ public class LoginActivity extends AppCompatActivity {// implements View.OnClick
                             public void success(CodeModel codeModel, Response response) {
                                 if (codeModel.code.equals("1")) {
                                     System.out.println("login_test naver success");
+                                    SharedPreferenceAdapter.setUserType(LoginActivity.this, "2");
 
                                 } else {
                                     System.out.println("login_test naver : "+codeModel.message);

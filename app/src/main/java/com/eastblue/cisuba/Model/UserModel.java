@@ -13,20 +13,20 @@ public class UserModel {
     @SerializedName("id")
     @Expose
     public Integer id;
-    @SerializedName("email")
+    @SerializedName("u_id")
     @Expose
-    public String email;
-    @SerializedName("username")
+    public String u_id;
+    @SerializedName("u_name")
     @Expose
-    public String username;
-    @SerializedName("last_login")
+    public String u_name;
+    @SerializedName("u_last_login")
     @Expose
-    public String lastLogin;
-    @SerializedName("date_join")
+    public String u_last_login;
+    @SerializedName("u_date_join")
     @Expose
-    public String dateJoin;
-    @SerializedName("phone")
+    public String u_date_join;
+    @SerializedName("u_phone")
     @Expose
-    public String phone;
+    public String u_phone;
 
 }

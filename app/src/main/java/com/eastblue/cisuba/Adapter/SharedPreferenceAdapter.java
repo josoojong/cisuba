@@ -12,6 +12,7 @@ public class SharedPreferenceAdapter {
     static final String PREF_USER_EMAIL = "user_email";
     static final String PREF_USER_NAME = "user_name";
     static final String PREF_USER_PHONE = "user_phone";
+    static final String PREF_USER_TYPE = "user_type";
     static final String PREF_USER_LOGIN = "user_login";
     static final String PREF_OWNER_LOGIN = "owner_login";
 
@@ -67,6 +68,16 @@ public class SharedPreferenceAdapter {
 
     public static String getUserPhone(Context ctx) {
         return getSharedPreferences(ctx).getString(PREF_USER_PHONE,"");
+    }
+
+    public static void setUserType(Context ctx, String userType) {
+        SharedPreferences.Editor editor = getSharedPreferences(ctx).edit();
+        editor.putString(PREF_USER_TYPE, userType);
+        editor.commit();
+    }
+
+    public static String getUserType(Context ctx) {
+        return getSharedPreferences(ctx).getString(PREF_USER_TYPE,"");
     }
 
     public static void clearUserEmail(Context ctx) {

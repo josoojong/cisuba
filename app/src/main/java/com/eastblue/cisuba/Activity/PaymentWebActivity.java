@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 public class PaymentWebActivity extends AppCompatActivity {
     private WebView mWebView;
     private WebSettings mWebSettings;
-    String p_id, count, type, email, pay_method;
+    String p_id, count, i_type, p_type, email, pay_method;
 
     String url = NetworkManager.SERVER_URL+"/payments/iamport";
     //String url = "http://www.naver.com";
@@ -41,13 +41,14 @@ public class PaymentWebActivity extends AppCompatActivity {
         Intent intent = getIntent();
         p_id = intent.getStringExtra("p_id");
         count = intent.getStringExtra("count");
-        type = intent.getStringExtra("type");
+        p_type = intent.getStringExtra("p_type");
+        i_type = intent.getStringExtra("i_type");
         email = intent.getStringExtra("email");
         pay_method = intent.getStringExtra("pay_method");
         String postData = "";
         try {
-            postData = "p_id=" + URLEncoder.encode(p_id, "UTF-8") + "&count=" + URLEncoder.encode(count, "UTF-8") + "&type=" + URLEncoder.encode(type, "UTF-8")
-                    + "&email=" + URLEncoder.encode(email, "UTF-8") + "&pay_method=" + URLEncoder.encode(pay_method, "UTF-8");
+            postData = "p_id=" + URLEncoder.encode(p_id, "UTF-8") + "&count=" + URLEncoder.encode(count, "UTF-8") + "&p_type=" + URLEncoder.encode(p_type, "UTF-8")
+                    +"&i_type="+URLEncoder.encode(i_type, "UTF-8")+ "&email=" + URLEncoder.encode(email, "UTF-8") + "&pay_method=" + URLEncoder.encode(pay_method, "UTF-8");
         } catch (Exception e) {
 
         }

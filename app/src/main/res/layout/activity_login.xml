@@ -86,9 +86,9 @@
                         android:layout_height="32dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="20dp"
-                        android:src="@drawable/ic_kakao"
+                        android:src="@drawable/ic_kakao" />
 
-                        />
+                        <!--android:tint="@color/bg_login_button" />-->
 
 
                     <TextView
@@ -131,7 +131,7 @@
                     android:layout_marginLeft="20dp"
                     android:src="@drawable/ic_naver"
 
-                    />
+                    android:tint="@color/LimeGreen" />
 
 
                 <TextView
@@ -168,11 +168,31 @@
                 android:layout_marginTop="30dp"
                 android:text="이메일로 로그인" />
 
+            <RadioGroup
+                android:id="@+id/login_radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/rb_general"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="일반 회원" />
+
+                <RadioButton
+                    android:id="@+id/rb_owner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="업주" />
+
+            </RadioGroup>
+
             <EditText
                 android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/tv_email"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"
@@ -190,7 +210,6 @@
                 android:id="@+id/input_pass"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/input_email"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginBottom="5dp"
@@ -209,7 +228,6 @@
                 android:id="@+id/email_login"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@+id/input_pass"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginLeft="8dp"

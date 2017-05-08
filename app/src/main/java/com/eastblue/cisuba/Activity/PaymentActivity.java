@@ -268,7 +268,8 @@ public class PaymentActivity extends AppCompatActivity implements RadioGroup.OnC
             Intent intent = new Intent(PaymentActivity.this, PaymentWebActivity.class);
             intent.putExtra("p_id",ProductDetailActivity.pk_id);
             intent.putExtra("count",Integer.toString(amount));
-            intent.putExtra("type",type);
+            intent.putExtra("p_type",type);
+            intent.putExtra("i_type",SharedPreferenceAdapter.getUserType(PaymentActivity.this));
             intent.putExtra("email",SharedPreferenceAdapter.getUserEmail(PaymentActivity.this));
             intent.putExtra("pay_method",pay_way);
             startActivity(intent);

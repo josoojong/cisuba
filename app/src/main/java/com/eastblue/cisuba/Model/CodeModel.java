@@ -21,4 +21,7 @@ public class CodeModel {
 
     @SerializedName("message")
     public String message;
+
+    @SerializedName("access_token")
+    public String access_token;
 }
